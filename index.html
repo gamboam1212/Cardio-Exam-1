@@ -152,6 +152,7 @@
       <div class="footerNote">
         Dose‑range questions are only generated where a range is explicitly provided in the table (e.g., lisinopril 10–40 mg/day, losartan 50–100 mg/day, valsartan 80–320 mg/day, etc.).
       </div>
+      <div id="selftest" class="footerNote"></div>
     </div>
 
     <div class="card">
@@ -298,7 +299,6 @@ const DRUGS = {
 };
 
 const FACTS = {
-  // Mechanisms / pathways / increases-decreases from the table
   acei: {
     class:"ACE inhibitors",
     moa:"Inhibit angiotensin converting enzyme (ACE; peptidyl dipeptidase) → ↓ Ang I→Ang II conversion.",
@@ -310,7 +310,7 @@ const FACTS = {
     class:"Angiotensin receptor blockers (ARBs)",
     moa:"Block AT1 receptor activation by angiotensin II.",
     pathway:"RAAS: blocks Ang II action at AT1 receptor.",
-    incDec:["↓ Ang II effects at AT1","↓ aldosterone","Hyperkalemia risk","Less angioedema than ACEi (per table)"] ,
+    incDec:["↓ Ang II effects at AT1","↓ aldosterone","Hyperkalemia risk","Less angioedema than ACEi (per table)"],
     tox:["Severe first‑dose hypotension (high renin)","Hyperkalemia","Fetopathic potential—stop when pregnancy confirmed","Maculopapular rash","Less angioedema (vs ACEi)"]
   },
   renin: {
@@ -324,7 +324,7 @@ const FACTS = {
     class:"Calcium channel blockers (DHP)",
     moa:"Inhibit Ca2+ influx into arterial smooth muscle → ↓ vasoconstriction → vasodilation.",
     pathway:"Blocks L‑type Ca2+ entry in vascular smooth muscle (functional pathway).",
-    incDec:["↓ Ca2+ entry into arterial smooth muscle","↓ vasoconstriction","↑ vasodilation","Reflex sympathetic activation → tachycardia (esp IV)"] ,
+    incDec:["↓ Ca2+ entry into arterial smooth muscle","↓ vasoconstriction","↑ vasodilation","Reflex sympathetic activation → tachycardia (esp IV)"],
     tox:["Constipation","Tachycardia (reflex; more common IV)","Hypotension (dizziness/flushing/headache)","Gingival hyperplasia","GI complaints","Mood changes","Nifedipine: higher MI chance → avoid in cardiac history (table note)"]
   },
   ccb_non: {
@@ -338,7 +338,7 @@ const FACTS = {
     class:"Thiazide diuretics",
     moa:"Inhibit Na/Cl transporter (NCC) in DCT → natriuresis; enhanced Ca reabsorption (table).",
     pathway:"Nephron: DCT NCC blockade.",
-    incDec:["↓ Na reabsorption (DCT)","↑ Na/Cl in urine","↑ Ca reabsorption (table)","↓ Mg, Na, K (table)","↑ uric acid, lipids; ↑ blood sugar (table)"] ,
+    incDec:["↓ Na reabsorption (DCT)","↑ Na/Cl in urine","↑ Ca reabsorption (table)","↓ Mg, Na, K (table)","↑ uric acid, lipids; ↑ blood sugar (table)"],
     tox:["Electrolyte abnormalities","Prolonged QT due to hypokalemia","ED (table)"]
   },
   loop: {
@@ -346,7 +346,7 @@ const FACTS = {
     moa:"Block NKCC2 cotransporter → ↑ urinary Na/Cl excretion; ↓ Ca/Mg/K (table).",
     pathway:"Nephron: thick ascending limb NKCC2 blockade.",
     incDec:["↑ Na/Cl excretion","↓ Ca, Na, Mg, K (table)","↑ uric acid","↑ blood sugar"],
-    tox:["Ototoxicity","Electrolyte abnormalities","Severe dehydration","Nephrotoxic (table)" ]
+    tox:["Ototoxicity","Electrolyte abnormalities","Severe dehydration","Nephrotoxic (table)"]
   },
   k_sparing: {
     class:"K+‑sparing diuretics (ENaC blockers)",
@@ -357,7 +357,7 @@ const FACTS = {
   },
   mra: {
     class:"Mineralocorticoid receptor antagonists",
-    moa:"Block aldosterone receptor → indirectly reduce Na+ channels activity (table)."," + "
+    moa:"Block aldosterone receptor → indirectly reduce Na+ channels activity (table).",
     pathway:"Nephron/RAAS: blocks aldosterone effect at mineralocorticoid receptor.",
     incDec:["↓ aldosterone signaling","↓ Na reabsorption via ENaC/Na+ channels activity","↑ K retention"],
     tox:["Hyperkalemia","Gynecomastia (spironolactone; nonselective anti‑androgen)"]
@@ -366,28 +366,28 @@ const FACTS = {
     class:"Beta blockers",
     moa:"Antagonize beta receptors; β1 blockade → ↓ HR. Some agents have extra effects per table.",
     pathway:"Sympathetic: β1 blockade (heart); some β2 effects + renin changes per table.",
-    incDec:["↓ HR","Nonselective β2 blockade → bronchoconstriction risk","β2 blockade → ↓ glucose release → prolonged hypoglycemia (table)","β2 blockade → ↓ renin release (table)","Nebivolol stimulates eNOS → ↑ NO → vasodilation (table)"] ,
+    incDec:["↓ HR","Nonselective β2 blockade → bronchoconstriction risk","β2 blockade → ↓ glucose release → prolonged hypoglycemia (table)","β2 blockade → ↓ renin release (table)","Nebivolol stimulates eNOS → ↑ NO → vasodilation (table)"],
     tox:["Avoid in reactive airway disease (esp nonselective) (table)","Rebound tachycardia/HTN if sudden withdrawal (table)","Decreased exercise tolerance","Sexual dysfunction"]
   },
   alpha1: {
     class:"Alpha‑1 blockers",
     moa:"Block α1 receptors on vascular smooth muscle → inhibit vasoconstriction. Useful in HTN + BPH (table).",
     pathway:"Sympathetic: α1 blockade on vascular smooth muscle.",
-    incDec:["↓ vasoconstriction","Risk: first dose effect/orthostatic hypotension","Kidney: Na/water retention → ↑ plasma volume (table note)"] ,
+    incDec:["↓ vasoconstriction","Risk: first dose effect/orthostatic hypotension","Kidney: Na/water retention → ↑ plasma volume (table note)"],
     tox:["First dose effect","Orthostatic hypotension","Increased CHF risk when used as monotherapy (table)"]
   },
   alpha2: {
     class:"Alpha‑2 agonists",
     moa:"Agonize α2 receptors → negative feedback → ↓ norepinephrine release (table).",
     pathway:"Sympathetic: central α2 agonism reduces sympathetic outflow.",
-    incDec:["↓ NE release","Also inhibits ACh release + insulin release (table)"] ,
+    incDec:["↓ NE release","Also inhibits ACh release + insulin release (table)"],
     tox:["Anticholinergic effects (dry mouth, blurred vision)","Hypotension","Bradycardia","Fatigue","Sexual dysfunction","Sedation","Rebound hypertension if abrupt stop","Depression"]
   },
   vasodilators: {
     class:"Direct vasodilators",
     moa:"Hydralazine: ↑ NO → ↑ cGMP → ↓ intracellular Ca2+ → arterial vasodilation. Minoxidil: opens K+ channels → hyperpolarization → prevents Ca2+ entry (table).",
     pathway:"Vascular smooth muscle: NO/cGMP pathway (hydralazine); K+ channel opener pathway (minoxidil).",
-    incDec:["Hydralazine: ↑ NO, ↑ cGMP, ↓ Ca2+","Minoxidil: ↑ K+ channel opening → hyperpolarization → ↓ Ca2+ entry","Reflex sympathetic outflow → tachycardia/angina (table)","Kidney response: ↑ renin (table)"] ,
+    incDec:["Hydralazine: ↑ NO, ↑ cGMP, ↓ Ca2+","Minoxidil: ↑ K+ channel opening → hyperpolarization → ↓ Ca2+ entry","Reflex sympathetic outflow → tachycardia/angina (table)","Kidney response: ↑ renin (table)"],
     tox:["Headache/flushing/dizziness/nausea (vasodilation)","Hypotension","Hydralazine‑induced lupus syndrome","Tachyphylaxis","Reflex tachycardia/palpitations/angina","Salt/fluid retention","Minoxidil: hypertrichosis (hair growth)","Requires diuretic + beta blocker combination therapy (table)","Minoxidil PO is a prodrug (table)"]
   }
 };
@@ -409,18 +409,15 @@ const ALL_DRUGS = buildLookup();
 
 function distractorsForBrand(correctGen){
   const pool = ALL_DRUGS.filter(d=>d.gen!==correctGen && d.brand && d.brand!=="(brand not listed)");
-  const picks = uniq(shuffle(pool).slice(0,3).map(d=>d.gen));
-  return picks;
+  return uniq(shuffle(pool).slice(0,3).map(d=>d.gen));
 }
 function distractorsForGeneric(correctBrand){
   const pool = ALL_DRUGS.filter(d=>d.brand!==correctBrand && d.brand && d.brand!=="(brand not listed)");
-  const picks = uniq(shuffle(pool).slice(0,3).map(d=>d.brand));
-  return picks;
+  return uniq(shuffle(pool).slice(0,3).map(d=>d.brand));
 }
 
 function normalizeRange(r){
-  // keep table string as-is (no invention)
-  return r;
+  return r; // keep table string as-is (no invention)
 }
 
 function makeMCQ(q, correct, wrongs, explain, src, tags=[]){
@@ -452,7 +449,6 @@ function generateQuestions(section="all", difficulty=2){
     all: Object.keys(DRUGS)
   }[section] || Object.keys(DRUGS);
 
-  // Helper: map drug bucket to FACTS key
   const bucketToFacts = (bucket)=>{
     if(bucket==="acei") return "acei";
     if(bucket==="arbs") return "arbs";
@@ -469,6 +465,7 @@ function generateQuestions(section="all", difficulty=2){
     if(bucket==="vasodilators") return "vasodilators";
     return null;
   };
+
   const bucketToSource = (bucket)=>{
     const m = {
       acei:SOURCES.ACE, arbs:SOURCES.ARB, renin:SOURCES.RENIN,
@@ -481,11 +478,9 @@ function generateQuestions(section="all", difficulty=2){
     return m[bucket] || "Antihypertensive Drug Table";
   };
 
-  // Brand ↔ Generic for every drug with brand listed
   want.forEach(bucket=>{
     DRUGS[bucket].forEach(d=>{
       if(d.brand && d.brand!=="(brand not listed)"){
-        // brand -> generic
         qs.push(makeMCQ(
           `Brand → Generic: ${d.brand} is which generic?`,
           d.gen,
@@ -494,7 +489,6 @@ function generateQuestions(section="all", difficulty=2){
           bucketToSource(bucket),
           ["brand→generic", bucket]
         ));
-        // generic -> brand
         qs.push(makeMCQ(
           `Generic → Brand: ${d.gen} corresponds to which brand?`,
           d.brand,
@@ -505,9 +499,7 @@ function generateQuestions(section="all", difficulty=2){
         ));
       }
 
-      // Dose range only when explicitly provided
       if(d.range){
-        // build 3 distractor ranges from other known ranges
         const allRanges = uniq(ALL_DRUGS.filter(x=>x.range).map(x=>x.range));
         const wrongRanges = shuffle(allRanges.filter(r=>r!==d.range)).slice(0,3);
         qs.push(makeMCQ(
@@ -518,7 +510,6 @@ function generateQuestions(section="all", difficulty=2){
           bucketToSource(bucket),
           ["dose-range", bucket]
         ));
-        // Fill blank range
         qs.push(makeFill(
           `Fill‑in: Enter the listed dose range for ${d.gen} (${d.brand}).`,
           normalizeRange(d.range),
@@ -528,7 +519,6 @@ function generateQuestions(section="all", difficulty=2){
         ));
       }
 
-      // Class mapping
       const fkey = bucketToFacts(bucket);
       if(fkey){
         qs.push(makeMCQ(
@@ -539,11 +529,7 @@ function generateQuestions(section="all", difficulty=2){
           bucketToSource(bucket),
           ["drug→class", bucket]
         ));
-      }
 
-      // Pathway / receptor / transporter mapping
-      if(fkey){
-        // Create a pathway MCQ from a curated set
         const pathwayChoices = uniq([
           FACTS.acei.pathway,
           FACTS.arbs.pathway,
@@ -570,10 +556,8 @@ function generateQuestions(section="all", difficulty=2){
           ["drug→pathway", bucket]
         ));
 
-        // Increase/decrease logic questions (difficulty-dependent)
         const incDec = FACTS[fkey].incDec;
         if(incDec && incDec.length){
-          // Pick one statement as correct, others as distractors
           const correct = pick(incDec);
           const pool = uniq(Object.values(FACTS).flatMap(x=>x.incDec || [])).filter(x=>x!==correct);
           const wrongs = shuffle(pool).slice(0,3);
@@ -585,21 +569,17 @@ function generateQuestions(section="all", difficulty=2){
             bucketToSource(bucket),
             ["inc/dec", bucket]
           ));
-
-          // Fill blank for one high-yield inc/dec
           if(difficulty>=2){
-            const fb = correct;
             qs.push(makeFill(
               `Fill‑in: ${FACTS[fkey].class} → (write one key ↑/↓ effect exactly as in the table/derived statement).`,
-              fb,
-              `Key effect listed/derived directly from the class MOA/notes: ${fb}.`,
+              correct,
+              `Key effect listed/derived directly from the class MOA/notes: ${correct}.`,
               bucketToSource(bucket),
               ["inc/dec", "fill", bucket]
             ));
           }
         }
 
-        // Toxicity / BBW recognition
         const tox = FACTS[fkey].tox;
         if(tox && tox.length){
           const correctT = pick(tox);
@@ -618,60 +598,51 @@ function generateQuestions(section="all", difficulty=2){
     });
   });
 
-  // VIGNETTES (apply table logic only; no external facts)
   if(difficulty>=2){
-    // ACEi cough/angioedema
+    const v1Opts = shuffle(["ACE inhibitors","ARBs","DHP CCBs","Loop diuretics"]);
     qs.push(makeVignette(
       "A patient starts a new antihypertensive and develops a persistent dry cough shortly after. The clinician suspects it is due to buildup of a peptide normally broken down by ACE.",
       "Which drug class best fits?",
-      shuffle(["ACE inhibitors","ARBs","DHP CCBs","Loop diuretics"]),
-      null,
+      v1Opts,
+      v1Opts.indexOf("ACE inhibitors"),
       "ACE breaks down bradykinin; inhibiting ACE → bradykinin accumulation → dry cough (table).",
       SOURCES.ACE,
       ["vignette","ACEi","bradykinin"]
     ));
 
-    // We need correct index after shuffle
-    qs[qs.length-1].answerIndex = qs[qs.length-1].options.indexOf("ACE inhibitors");
-
-    // ARB less angioedema
-    const opts2 = shuffle(["ARBs","ACE inhibitors","Alpha‑2 agonists","Thiazides"]);
+    const v2Opts = shuffle(["ARBs","ACE inhibitors","Alpha‑2 agonists","Thiazides"]);
     qs.push(makeVignette(
       "A patient needs RAAS blockade but wants lower risk of angioedema compared with ACE inhibition (per your table notes).",
       "Which class should be chosen?",
-      opts2,
-      opts2.indexOf("ARBs"),
+      v2Opts,
+      v2Opts.indexOf("ARBs"),
       "The table notes ARBs have less angioedema compared with ACE inhibitors.",
       SOURCES.ARB,
       ["vignette","ARB"]
     ));
 
-    // Non-DHP + beta blocker caution
-    const opts3 = shuffle(["Non‑DHP CCBs (verapamil/diltiazem)","DHP CCBs","Loop diuretics","Alpha‑1 blockers"]);
+    const v3Opts = shuffle(["Non‑DHP CCBs (verapamil/diltiazem)","DHP CCBs","Loop diuretics","Alpha‑1 blockers"]);
     qs.push(makeVignette(
       "A patient is already on a beta blocker. You consider adding a calcium channel blocker but want to avoid excessive bradycardia/AV block from additive slowing of SA/AV nodes.",
       "Which option is the ONE to be cautious with based on the table?",
-      opts3,
-      opts3.indexOf("Non‑DHP CCBs (verapamil/diltiazem)"),
+      v3Opts,
+      v3Opts.indexOf("Non‑DHP CCBs (verapamil/diltiazem)"),
       "Table: Non‑DHP CCBs slow SA/AV nodes; caution with beta blockers due to additive bradycardia/AV block.",
       SOURCES.CCB_NON,
       ["vignette","non‑DHP"]
     ));
 
-    // ENaC blocker BBW hyperkalemia
-    const opts4 = shuffle(["ENaC blockers (K+‑sparing diuretics)","Thiazides","Loop diuretics","DHP CCBs"]);
+    const v4Opts = shuffle(["Hyperkalemia","Ototoxicity","Dry cough","Gingival hyperplasia"]);
     qs.push(makeVignette(
       "A patient is started on a diuretic that directly blocks ENaC in the late DCT/collecting duct and is known for a BBW listed in your table.",
       "Which major risk/BBW is most expected?",
-      shuffle(["Hyperkalemia","Ototoxicity","Dry cough","Gingival hyperplasia"]),
-      null,
+      v4Opts,
+      v4Opts.indexOf("Hyperkalemia"),
       "Table explicitly lists BBW: Hyperkalemia for ENaC‑blocking K+‑sparing diuretics.",
       SOURCES.KSPARING,
       ["vignette","BBW","hyperkalemia"]
     ));
-    qs[qs.length-1].answerIndex = qs[qs.length-1].options.indexOf("Hyperkalemia");
 
-    // Hydralazine vs minoxidil mechanism
     const mechOpts = shuffle(["Hydralazine increases NO → cGMP → ↓ Ca2+","Minoxidil blocks AT1 receptor","Hydralazine blocks NKCC2","Minoxidil inhibits NCC"]);
     qs.push(makeVignette(
       "You add a direct arterial vasodilator for resistant hypertension. The table says it works by increasing nitric oxide and raising cGMP to lower intracellular Ca2+.",
@@ -684,10 +655,9 @@ function generateQuestions(section="all", difficulty=2){
     ));
   }
 
-  // PATHWAY VISUALIZATION CARDS
   const raasPre = `RAAS (what increases/decreases)\n\nLiver: angiotensinogen\n  |  (RENIN)  [Aliskiren blocks here]\n  v\nAngiotensin I\n  |  (ACE)     [ACE inhibitors block here]\n  v\nAngiotensin II\n  |  binds AT1 receptor  [ARBs block here]\n  v\nVasoconstriction + Aldosterone release\n\nKey changes from your table:\n- ACEi: ↓ Ang II, ↓ aldosterone, ↑ bradykinin → cough/angioedema; efferent dilation → ↓ GFR (AKI risk)\n- ARB: blocks AT1 effects; hyperkalemia + fetopathy; less angioedema vs ACEi\n- Aliskiren: ↓ Ang I → ↓ Ang II; do NOT combine with ACEi/ARB (table warning)`;
 
-  const nephronPre = `NEPHRON TARGETS (from your table)\n\nPCT -> (not covered here)\n\nThick Ascending Limb (TAL): NKCC2  [Loop diuretics block NKCC2]\n\nDCT: NCC (Na/Cl transporter)       [Thiazides block NCC]\n      • Table notes: enhanced Ca reabsorption with thiazides\n\nLate DCT / Collecting Duct: ENaC    [Amiloride/Triamterene block ENaC]\n      Aldosterone receptor (MR)     [Spironolactone/Eplerenone block MR]\n\nKey changes (table):\n- Loop: ↑ Na/Cl excretion; ↓ Ca/Mg/K; ototoxicity + dehydration\n- Thiazide: ↓ Na/Cl reabsorption; ↑ Ca reabsorption; ↓ K/Mg; ↑ uric acid/glucose/lipids\n- ENaC blockers: K spared; BBW hyperkalemia\n- MR antagonists: hyperkalemia; spironolactone → gynecomastia`;
+  const nephronPre = `NEPHRON TARGETS (from your table)\n\nThick Ascending Limb (TAL): NKCC2  [Loop diuretics block NKCC2]\n\nDCT: NCC (Na/Cl transporter)       [Thiazides block NCC]\n      • Table notes: enhanced Ca reabsorption with thiazides\n\nLate DCT / Collecting Duct: ENaC    [Amiloride/Triamterene block ENaC]\n      Aldosterone receptor (MR)     [Spironolactone/Eplerenone block MR]\n\nKey changes (table):\n- Loop: ↑ Na/Cl excretion; ↓ Ca/Mg/K; ototoxicity + dehydration\n- Thiazide: ↓ Na/Cl reabsorption; ↑ Ca reabsorption; ↓ K/Mg; ↑ uric acid/glucose/lipids\n- ENaC blockers: K spared; BBW hyperkalemia\n- MR antagonists: hyperkalemia; spironolactone → gynecomastia`;
 
   const caPre = `CALCIUM CHANNELS (from your table)\n\nDHP CCBs ("-dipine") → VASCULAR SMOOTH MUSCLE\n- Inhibit Ca2+ influx → vasodilation\n- Reflex sympathetic activation → tachycardia (esp IV)\n\nNon‑DHP CCBs (verapamil/diltiazem) → HEART\n- Inhibit Ca2+ influx in myocardium/SA/AV nodes\n- ↓ HR, ↓ AV conduction, ↓ contractility\n- Caution with beta blockers (additive bradycardia/AV block)\n- Moderate CYP3A4 inhibition (table)`;
 
@@ -734,7 +704,6 @@ function startExam(){
 
   BANK = generateQuestions(section, difficulty);
 
-  // Filter by mode (but keep pathway cards if mixed)
   let filtered = BANK;
   if(mode!=="mixed"){
     if(mode==="mcq") filtered = BANK.filter(q=>q.type==="mcq" || q.type==="vignette");
@@ -743,11 +712,9 @@ function startExam(){
     if(mode==="path") filtered = BANK.filter(q=>q.type==="path");
   }
 
-  // If mixed, keep all; then downsample/upsample to target
   filtered = shuffle(filtered);
   if(filtered.length > target) filtered = filtered.slice(0, target);
 
-  // If target > available, we cycle (but still no new facts)
   while(filtered.length < target){
     filtered.push(...shuffle(filtered).slice(0, Math.min(25, target-filtered.length)));
   }
@@ -799,26 +766,16 @@ function resetAll(){
 }
 
 function pullNext(){
-  // Weighted random selection favoring unseen and missed questions (if adaptive ON)
   const adaptive = document.getElementById('adaptive').value === 'on';
   if(!QUEUE.length) return null;
+  if(!adaptive) return QUEUE.shift();
 
-  if(!adaptive){
-    return QUEUE.shift();
-  }
-
-  // build weight sum
   let total = 0;
-  for(const item of QUEUE){
-    // weight increases if wrong and not yet mastered
-    total += item.weight;
-  }
+  for(const item of QUEUE) total += item.weight;
   let r = Math.random()*total;
   for(let i=0;i<QUEUE.length;i++){
     r -= QUEUE[i].weight;
-    if(r<=0){
-      return QUEUE.splice(i,1)[0];
-    }
+    if(r<=0) return QUEUE.splice(i,1)[0];
   }
   return QUEUE.shift();
 }
@@ -845,11 +802,10 @@ function nextQuestion(force=false){
 
 function updateHUD(){
   const total = done + QUEUE.length + (current && !answered ? 1 : 0);
-  const shownDone = done;
-  document.getElementById('progress').innerText = `${shownDone}/${Math.max(total,0)}`;
+  document.getElementById('progress').innerText = `${done}/${Math.max(total,0)}`;
   document.getElementById('score').innerText = `${correct}`;
   document.getElementById('streak').innerText = `${streak}`;
-  const pct = total ? Math.round((shownDone/total)*100) : 0;
+  const pct = total ? Math.round((done/total)*100) : 0;
   document.getElementById('barFill').style.width = pct + "%";
 }
 
@@ -892,8 +848,7 @@ function renderQuestion(item){
     return;
   }
 
-  // MCQ / vignette
-  const opts = q.options.map((opt, idx)=>`<div class='opt' onclick='submitMCQ(${idx})'>${escapeHtml(opt)}</div>`).join('');
+  const opts = (q.options||[]).map((opt, idx)=>`<div class='opt' onclick='submitMCQ(${idx})'>${escapeHtml(opt)}</div>`).join('');
   panel.innerHTML = `${meta}
     <div class='qtext'>${escapeHtml(q.q).replace(/\n/g,'<br>')}</div>
     <div class='options'>${opts}</div>
@@ -914,8 +869,7 @@ function submitMCQ(choice){
 
   if(isCorrect){
     correct++; streak++;
-    if(reveal !== 'never') opts[choice].classList.add('correct');
-    // mastered -> lower weight
+    if(reveal !== 'never') opts[choice]?.classList.add('correct');
     current.weight = Math.max(1, current.weight - 0.25);
   } else {
     streak = 0;
@@ -923,21 +877,18 @@ function submitMCQ(choice){
     MISSED.push({ when: new Date().toISOString(), q: q.q, type: q.type, tags: q.tags||[], src:q.src });
 
     if(reveal !== 'never'){
-      opts[choice].classList.add('incorrect');
-      opts[correctIdx].classList.add('correct');
+      opts[choice]?.classList.add('incorrect');
+      opts[correctIdx]?.classList.add('correct');
     }
 
-    // adaptive reinsert with higher weight
     const adaptive = document.getElementById('adaptive').value === 'on';
     if(adaptive){
       current.weight = Math.min(6, current.weight + 1.25);
-      // put back later in the queue, not immediately
       const insertAt = Math.min(QUEUE.length, 6 + randInt(12));
       QUEUE.splice(insertAt, 0, current);
     }
   }
 
-  // explanation
   const fb = document.getElementById('feedback');
   fb.innerHTML = `<div class='explain'>${escapeHtml(q.explain)}<div class='src'>Source: ${escapeHtml(q.src)}</div></div>`;
 
@@ -957,7 +908,7 @@ function submitFill(){
   if(!current || answered) return;
   const q = current.q;
   const input = document.getElementById('fillInput');
-  const val = input.value;
+  const val = input?.value || "";
   const correctAns = q.answer;
   const isCorrect = norm(val) === norm(correctAns);
 
@@ -993,7 +944,7 @@ function submitFill(){
 function hintFill(){
   const q = current?.q;
   if(!q || q.type!=='fill') return;
-  const a = q.answer;
+  const a = q.answer || "";
   const hint = a.length<=6 ? a : (a.slice(0, Math.min(12,a.length)) + "…");
   const fb = document.getElementById('feedback');
   fb.innerHTML = `<div class='explain'><span class='tag warn'>Hint</span> Starts with: <b>${escapeHtml(hint)}</b><div class='src'>Source: ${escapeHtml(q.src)}</div></div>`;
@@ -1048,8 +999,51 @@ function escapeHtml(s){
     .replaceAll("'",'&#039;');
 }
 
+// =============================
+// SELF TESTS (run on load)
+// =============================
+function assert(cond, msg){
+  if(!cond) throw new Error(msg);
+}
+
+function runSelfTests(){
+  // 1) FACTS should not contain undefined keys and must include mra.pathway (regression for prior syntax error)
+  assert(FACTS.mra && typeof FACTS.mra.pathway === 'string', 'FACTS.mra.pathway missing');
+  assert(typeof FACTS.mra.moa === 'string', 'FACTS.mra.moa missing');
+
+  // 2) generateQuestions should return non-empty bank
+  const qs = generateQuestions('all', 2);
+  assert(Array.isArray(qs) && qs.length > 50, 'Question bank too small');
+
+  // 3) All mcq/vignette must have answerIndex defined and in range
+  const needsAnswer = qs.filter(q => q.type === 'mcq' || q.type === 'vignette');
+  for(const q of needsAnswer){
+    assert(Number.isInteger(q.answerIndex), `Missing answerIndex for: ${q.type} ${q.q?.slice?.(0,60)}`);
+    assert(Array.isArray(q.options) && q.options.length >= 2, 'Options missing');
+    assert(q.answerIndex >= 0 && q.answerIndex < q.options.length, 'answerIndex out of range');
+  }
+
+  // 4) Path cards exist
+  assert(qs.some(q=>q.type==='path'), 'No pathway cards generated');
+
+  return {ok:true, msg:`Self-tests passed: ${qs.length} questions generated.`};
+}
+
+function showSelfTestResult(){
+  const el = document.getElementById('selftest');
+  try{
+    const r = runSelfTests();
+    el.innerHTML = `<span class='tag ok'>OK</span> ${escapeHtml(r.msg)} (Check console for details.)`;
+    console.log('[SELFTEST]', r.msg);
+  }catch(e){
+    el.innerHTML = `<span class='tag bad'>FAIL</span> ${escapeHtml(e.message)} (Open DevTools console.)`;
+    console.error('[SELFTEST FAIL]', e);
+  }
+}
+
 // initial state
 resetAll();
+showSelfTestResult();
 </script>
 </body>
 </html>
